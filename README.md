@@ -6,6 +6,18 @@
 
 ---
 
+🚧 Project Status
+
+Under Construction 🚧
+
+JavaFlix is a work-in-progress. Upcoming features include:
+
+    ✅ Bookmarking favorites
+
+    🔄 Ligth Mode
+
+    🔄 User login and personal profiles
+
 ## 🚀 Features
 
 ✨ **Discover Movies**  
@@ -39,5 +51,40 @@ Fetches real-time movie data from a reliable external API (e.g., TMDB or OMDb).
 
 ---
 
-## 📁 Project Structure
+## 💡 How It Works
+
+1. **User opens the homepage** (`javaflix.html`)
+2. **Search bar** allows users to input a movie name
+3. Java fetches movie data from the **OMDb API**
+4. Results are dynamically displayed on the page
+5. Users can **bookmark** movies.
+6. **Saved Movie** shows the list of saved movies
+
+--
+
+## ⚙️ Installation & Setup
+
+To run JavaFlix locally:
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/javaflix.git
+   
+   cd javaflix
+
+   open javaflix.html
+
+
+🙌 Acknowledgements
+
+    OMDb API
+
+    Font Awesome
+
+    Google Fonts
+
+📜 License
+
+This project is licensed under the MIT License.
+Feel free to use and modify it for personal or commercial purposes.
 
