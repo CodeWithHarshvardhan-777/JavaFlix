@@ -2,7 +2,7 @@
 
 **JavaFlix** is a dynamic web application that allows users to discover, search, and save movies using a third-party movie API. With a clean interface, powerful search, and the ability to bookmark favorites, JavaFlix is your personal movie exploration companion.
 
-![JavaFlix Screenshot](assets/images/javaflix-preview.png) <!-- Add your screenshot image path -->
+![JavaFlix Screenshot](assets/images) <!-- Add your screenshot image path -->
 
 ---
 
@@ -50,6 +50,9 @@ Fetches real-time movie data from a reliable external API (e.g., TMDB or OMDb).
 - **External Movie API** ( OMDb API)
 
 ---
+
+📁 Project Structure
+
 
 ## 💡 How It Works
 
