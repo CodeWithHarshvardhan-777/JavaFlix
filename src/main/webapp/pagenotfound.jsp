@@ -1,0 +1,50 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error | JavaFlix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/pagenotfound.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">Java<span>Flix</span></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Saved Movies</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<!-- Error Content -->
+<main class="error-container">
+    <div class="error-box">
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h1 class="error-title">Oops! Something went wrong</h1>
+        <p class="error-message">We encountered an error while processing your request.</p>
+
+        <% if (request.getAttribute("error") != null) { %>
+        <div class="error-details">
+            <%= request.getAttribute("error") %>
+        </div>
+        <% } %>
+
+        <a href="javaflix.html" class="home-btn">
+            <i class="fas fa-home"></i> Back to Home
+        </a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p class="copyright">&copy; 2023 JavaFlix. All rights reserved.</p>
+</footer>
+</body>
+</html>

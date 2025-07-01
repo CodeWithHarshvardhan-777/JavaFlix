@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaFlix - Discover Movies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">Java<span>Flix</span></div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="error404.html">Saved Movies</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<!-- Hero Section with Search -->
+<section class="hero">
+    <h1>Discover Your Next Favorite Movie</h1>
+    <p>Search through thousands of movies, save your favorites, and get detailed information about cast, ratings, and more.</p>
+
+    <form id="searchForm" class="search-container" action="try" method="GET">
+        <input type="text" id="searchInput" name="query" class="search-bar" placeholder="Search for movies..." required>
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i> Search</button>
+    </form>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <h2 class="section-title">Why Choose JavaFlix</h2>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-film"></i>
+            </div>
+            <h3>Extensive Database</h3>
+            <p>Access information on thousands of movies from various genres and eras.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-bookmark"></i>
+            </div>
+            <h3>Save Favorites</h3>
+            <p>Create your personal collection by saving movies to watch later.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <h3>Detailed Information</h3>
+            <p>Get comprehensive details about each movie including cast, crew, and ratings.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+
+        <p class="copyright">&copy; 2025 JavaFlix. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
