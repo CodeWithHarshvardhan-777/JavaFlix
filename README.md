@@ -90,6 +90,6 @@ To run JavaFlix locally:
 
 📜 License
 
-This project is licensed under the ![MIT LICENSE)(src/main/webapp/assets/images) .
+This project is licensed under the ![MIT LICENSE](src/main/webapp/assets/images)  .
 Feel free to use and modify it for personal or commercial purposes.
 
