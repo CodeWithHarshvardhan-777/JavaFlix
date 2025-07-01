@@ -51,9 +51,10 @@ Fetches real-time movie data from a reliable external API (e.g., TMDB or OMDb).
 
 ---
 
-📁 Project Structure
-![Project Structue.txt](structure.txt)
+📁 Project Structure<br>
+![Structue](structure.txt)
 
+---
 
 ## 💡 How It Works
 
@@ -89,6 +90,6 @@ To run JavaFlix locally:
 
 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the ![MIT LICENSE)(src/main/webapp/assets/images) .
 Feel free to use and modify it for personal or commercial purposes.
 
