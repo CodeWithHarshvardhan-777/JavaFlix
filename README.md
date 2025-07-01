@@ -18,6 +18,8 @@ JavaFlix is a work-in-progress. Upcoming features include:
 
     🔄 User login and personal profiles
 
+---
+
 ## 🚀 Features
 
 ✨ **Discover Movies**  
@@ -65,7 +67,7 @@ Fetches real-time movie data from a reliable external API (e.g., TMDB or OMDb).
 5. Users can **bookmark** movies.
 6. **Saved Movie** shows the list of saved movies
 
---
+---
 
 ## ⚙️ Installation & Setup
 
@@ -79,6 +81,7 @@ To run JavaFlix locally:
 
    open javaflix.html
 
+---
 
 🙌 Acknowledgements
 
@@ -87,6 +90,8 @@ To run JavaFlix locally:
     Font Awesome
 
     Google Fonts
+
+---
 
 📜 License
 
