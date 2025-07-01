@@ -52,7 +52,7 @@ Fetches real-time movie data from a reliable external API (e.g., TMDB or OMDb).
 ---
 
 📁 Project Structure
-![Project Structue.txt](src/main/webapp/assets/images)
+![Project Structue.txt](structure.txt)
 
 
 ## 💡 How It Works
