@@ -2,7 +2,7 @@
 
 **JavaFlix** is a dynamic web application that allows users to discover, search, and save movies using a third-party movie API. With a clean interface, powerful search, and the ability to bookmark favorites, JavaFlix is your personal movie exploration companion.
 
-![JavaFlix Screenshot](assets/images/javaflix-preview.png) <!-- Add your screenshot image path -->
+![JavaFlix Screenshot](src/main/webapp/assets/images) 
 
 ---
 
@@ -17,6 +17,8 @@ JavaFlix is a work-in-progress. Upcoming features include:
     🔄 Ligth Mode
 
     🔄 User login and personal profiles
+
+---
 
 ## 🚀 Features
 
@@ -51,6 +53,11 @@ Fetches real-time movie data from a reliable external API (e.g., TMDB or OMDb).
 
 ---
 
+📁 Project Structure<br>
+![Structue](structure.txt)
+
+---
+
 ## 💡 How It Works
 
 1. **User opens the homepage** (`javaflix.html`)
@@ -60,7 +67,7 @@ Fetches real-time movie data from a reliable external API (e.g., TMDB or OMDb).
 5. Users can **bookmark** movies.
 6. **Saved Movie** shows the list of saved movies
 
---
+---
 
 ## ⚙️ Installation & Setup
 
@@ -68,12 +75,13 @@ To run JavaFlix locally:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/javaflix.git
+   git clone https://github.com/CodeWithHarshvardhan-777/JavaFlix.git
    
    cd javaflix
 
    open javaflix.html
 
+---
 
 🙌 Acknowledgements
 
@@ -83,8 +91,10 @@ To run JavaFlix locally:
 
     Google Fonts
 
+---
+
 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the ![MIT LICENSE](LICENSE)  .
 Feel free to use and modify it for personal or commercial purposes.
 
