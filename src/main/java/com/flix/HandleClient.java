@@ -68,9 +68,13 @@ public class HandleClient extends HttpServlet {
             String imdbrating = jsonObject.has("imdbRating") ? jsonObject.get("imdbRating").toString().replace("\"", "") : "N/A";
             String imdbvotes = jsonObject.has("imdbVotes") ? jsonObject.get("imdbVotes").toString().replace("\"", "") : "N/A";
             String collection = jsonObject.has("BoxOffice") ? jsonObject.get("BoxOffice").toString().replace("\"", "") : "N/A";
+            String type = jsonObject.has("Type") ? jsonObject.get("Type").toString().replace("\"", "") : "N/A";
+            String season = jsonObject.has("totalSeasons") ? jsonObject.get("totalSeasons").toString().replace("\"", "") : "N/A";
 
             request.setAttribute("title",title.replaceAll("^\"|\"$",""));
             request.setAttribute("year",year.replaceAll("^\"|\"$",""));
+            request.setAttribute("type",type);
+            request.setAttribute("totalSeasons",season);
             request.setAttribute("released",released_Date);
             request.setAttribute("runtime",runtime);
             request.setAttribute("genre",genre);

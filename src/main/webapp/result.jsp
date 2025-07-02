@@ -14,12 +14,12 @@
 <nav class="navbar">
     <div class="logo">Java<span>Flix</span></div>
 
-      <!-- Hamburger Menu -->
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+    <!-- Hamburger Menu -->
+    <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
 
     <div class="nav-links">
         <a href="#">Home</a>
@@ -33,12 +33,14 @@
 <div class="movie-container">
     <div class="movie-poster-container">
         <div class="movie-poster">
-                <img src=<%= request.getAttribute("poster") %> alt="Movie Poster">
+            <img src=<%= request.getAttribute("poster") %> alt="Movie Poster">
             <form action="save-movie" method="post" id="saveFormSmall">
                 <input type="hidden" name="imdbID" value="<%= request.getAttribute("imdbID") %>">
                 <input type="hidden" name="title" value="<%= request.getAttribute("title") %>">
                 <input type="hidden" name="poster" value="<%= request.getAttribute("poster") %>">
                 <input type="hidden" name="year" value="<%= request.getAttribute("year") %>">
+                <input type="hidden" name="type" value="<%= request.getAttribute("type") %>">
+                <input type="hidden" name="totalSeasons" value="<%= request.getAttribute("totalSeasons") %>">
                 <button type="submit" class="save-btn" id="saveBtnSmall" aria-label="Save movie">
                     <% if (request.getAttribute("isSaved") != null && (Boolean) request.getAttribute("isSaved")) { %>
                         <i class="fas fa-bookmark"></i>
@@ -58,8 +60,13 @@
 
         <div class="movie-meta">
             <span><i class="fas fa-calendar-alt"></i> <%= request.getAttribute("year") %></span>
-            <span><i class="fas fa-clock"></i> <%= request.getAttribute("runtime") %></span>
+            <% if (!"series".equalsIgnoreCase((String) request.getAttribute("type"))) { %>
+                <span><i class="fas fa-clock"></i> <%= request.getAttribute("runtime") %></span>
+            <% } %>
             <span><i class="fas fa-film"></i> <%= request.getAttribute("genre") %></span>
+            <% if ("series".equalsIgnoreCase((String) request.getAttribute("type")) && request.getAttribute("totalSeasons") != null) { %>
+                            <span><i class="fas fa-tv"></i> <%= request.getAttribute("totalSeasons") %> Seasons</span>
+            <% } %>
             <span class="rating-badge">
                 <i class="fas fa-star"></i> <%= request.getAttribute("imdb_rate") %>
             </span>
@@ -72,6 +79,18 @@
                 <h3><i class="fas fa-calendar-check"></i> Released</h3>
                 <p><%= request.getAttribute("released") %></p>
             </div>
+
+                <div class="detail-item">
+                    <h3><i class="fas fa-tv"></i> Type</h3>
+                    <p><%= request.getAttribute("type") %></p>
+                </div>
+
+               <% if ("series".equalsIgnoreCase((String) request.getAttribute("type")) && request.getAttribute("totalSeasons") != null) { %>
+                            <div class="detail-item">
+                                <h3><i class="fas fa-list-ol"></i> Total Seasons</h3>
+                                <p><%= request.getAttribute("totalSeasons") %></p>
+                            </div>
+                        <% } %>
 
             <div class="detail-item">
                 <h3><i class="fas fa-user-tie"></i> Director</h3>
@@ -113,10 +132,12 @@
                 <p><%= request.getAttribute("imdb_vote") %></p>
             </div>
 
-            <div class="detail-item">
-                <h3><i class="fas fa-money-bill-wave"></i> Box Office</h3>
-                <p><%= request.getAttribute("collection") %></p>
-            </div>
+            <% if (request.getAttribute("collection") != null && !((String) request.getAttribute("collection")).isEmpty()) { %>
+                <div class="detail-item">
+                    <h3><i class="fas fa-money-bill-wave"></i> Box Office</h3>
+                    <p><%= request.getAttribute("collection") %></p>
+                </div>
+            <% } %>
         </div>
 
         <div class="action-buttons">
