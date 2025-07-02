@@ -12,6 +12,14 @@
 <!-- Navbar -->
 <nav class="navbar">
     <div class="logo">Java<span>Flix</span></div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="#">Saved Movies</a>
@@ -38,5 +46,23 @@
 <footer>
     <p class="copyright">&copy; 2025 JavaFlix. All rights reserved.</p>
 </footer>
+<script>
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+</script>
 </body>
 </html>

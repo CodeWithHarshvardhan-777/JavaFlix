@@ -29,7 +29,7 @@ public class HandleClient extends HttpServlet {
             throws ServletException, IOException {
 
 
-        String api_Key = "...secrete-key...for-key...contact-me..";
+        String api_Key = "a5f6d22";
         String movie = request.getParameter("query");
         String encodemovie = URLEncoder.encode(movie, StandardCharsets.UTF_8.toString());
         String url = "https://www.omdbapi.com/?t=" + encodemovie + "&apikey=" + api_Key;
