@@ -34,10 +34,13 @@
     <div class="movie-poster-container">
         <div class="movie-poster">
             <img src=<%= request.getAttribute("poster") %> alt="Movie Poster">
-            <form action="save-movie" method="post" id="saveFormSmall">
-                <input type="hidden" name="imdbID" value="<%= request.getAttribute("imdbID") %>">
+            <form action="savemovie" method="post" id="saveFormSmall">
+                <input type="hidden" name="imdbID" value="<%= request.getAttribute("imdb_rate") %>">
                 <input type="hidden" name="title" value="<%= request.getAttribute("title") %>">
-                <input type="hidden" name="poster" value="<%= request.getAttribute("poster") %>">
+                <% String url = (String) request.getAttribute("poster");
+                 HttpSession s1 = request.getSession();
+                 s1.setAttribute("url",url);
+                 %>
                 <input type="hidden" name="year" value="<%= request.getAttribute("year") %>">
                 <input type="hidden" name="type" value="<%= request.getAttribute("type") %>">
                 <input type="hidden" name="totalSeasons" value="<%= request.getAttribute("totalSeasons") %>">
