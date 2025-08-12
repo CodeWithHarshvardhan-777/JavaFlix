@@ -1,4 +1,4 @@
-# 🎬 JavaFlix Version 1.0.0
+# 🎬 JavaFlix Version 1.0
 
 **JavaFlix** is a dynamic web application that allows users to discover, search, and save movies using a third-party movie API. With a clean interface, powerful search, and the ability to bookmark favorites, JavaFlix is your personal movie exploration companion.
 
