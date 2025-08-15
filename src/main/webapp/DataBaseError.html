@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaFlix - Database Error</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e50914;
+            --primary-dark: #b2070f;
+            --dark: #141414;
+            --light: #f4f4f4;
+            --gray: #999;
+            --dark-gray: #222;
+            --imdb-yellow: #f5c518;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: var(--dark);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .logo .java {
+            color: white;
+        }
+
+        .logo .flix {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .hamburger:focus {
+            outline: none;
+        }
+
+        .bar {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .bar:nth-child(1) {
+            top: 0;
+        }
+
+        .bar:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+
+        .bar:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            background-color: var(--primary);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+            background-color: var(--primary);
+        }
+
+        /* Error Container */
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .error-details {
+            background-color: rgba(229, 9, 20, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 700px;
+            margin-bottom: 30px;
+            text-align: left;
+            border-left: 4px solid var(--primary);
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .error-btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .error-btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .error-btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .error-btn-secondary {
+            background-color: transparent;
+            color: var(--gray);
+            border: 1px solid var(--gray);
+        }
+
+        .error-btn-secondary:hover {
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 30px 0 20px;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .error-title {
+                font-size: 2.2rem;
+            }
+
+            .navbar {
+                padding: 15px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 25px;
+                padding: 80px 30px;
+                transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 8px 0;
+                width: 100%;
+            }
+
+            .nav-links a::after {
+                height: 2px;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-message {
+                font-size: 1rem;
+            }
+
+            .error-icon {
+                font-size: 4rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .error-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-title {
+                font-size: 1.8rem;
+            }
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .error-details {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">
+        <i class="fas fa-film"></i>
+        <span class="java">Java</span><span class="flix">Flix</span>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <button class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Saved Movies</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<!-- Error Content -->
+<main class="error-container">
+    <div class="error-icon">
+        <i class="fas fa-database"></i>
+    </div>
+
+    <h1 class="error-title">Database Error</h1>
+
+    <p class="error-message">
+        We encountered an issue while processing your request. The information could not be stored in our database.
+        Please try again later or contact our support team if the problem persists.
+    </p>
+
+    <div class="error-details">
+        <p><strong>Error details:</strong></p>
+        <p>SQL State: 08001</p>
+        <p>Error Code: 1045</p>
+        <p>Message: Could not connect to database server</p>
+    </div>
+
+    <div class="error-actions">
+        <a href="#" class="error-btn error-btn-primary">
+            <i class="fas fa-home"></i> Return Home
+        </a>
+        <a href="#" class="error-btn error-btn-secondary">
+            <i class="fas fa-redo"></i> Try Again
+        </a>
+        <a href="#" class="error-btn error-btn-secondary">
+            <i class="fas fa-envelope"></i> Contact Support
+        </a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Help Center</a>
+    </div>
+    <p class="copyright">&copy; 2025 JavaFlix. All rights reserved.</p>
+</footer>
+
+<script>
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+
+        // Toggle body overflow when menu is open
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Simple script to handle the "Try Again" button
+    document.querySelector('.error-btn-secondary:nth-of-type(1)').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.reload();
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
