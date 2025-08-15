@@ -30,12 +30,12 @@
     </button>
 
     <div class="nav-links">
-        <a href="#">Home</a>
+        <a href="javaflix.jsp">Home</a>
         <a href="CheckSession">Saved Movies</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
 
-        <%-- Check if user is logged in (session exists) --%>
+        <%-- Check if user is logged in --%>
         <% if (session != null && session.getAttribute("username") != null) { %>
         <div class="profile-container">
             <button class="profile-btn" id="profileBtn">
@@ -46,9 +46,14 @@
             </button>
             <div class="profile-dropdown" id="profileDropdown">
                 <a href="profile.jsp"><i class="fas fa-user"></i> Profile</a>
-                <a href="settings.jsp"><i class="fas fa-cog"></i> Settings</a>
+                <a href="setting.jsp"><i class="fas fa-cog"></i> Settings</a>
                 <a href="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
+        </div>
+        <% } else { %>
+        <div class="auth-buttons">
+            <a href="login.jsp" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="signup.jsp" class="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
         </div>
         <% } %>
     </div>
