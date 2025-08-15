@@ -12,11 +12,7 @@ Under Construction 🚧
 
 JavaFlix is a work-in-progress. Upcoming features include:
 
-    ✅ Bookmarking favorites
-
     🔄 Ligth Mode
-
-    🔄 User login and personal profiles
 
 ---
 
