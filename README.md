@@ -6,16 +6,6 @@
 
 ---
 
-🚧 Project Status
-
-Under Construction 🚧
-
-JavaFlix is a work-in-progress. Upcoming features include:
-
-    🔄 Ligth Mode
-
----
-
 ## 🚀 Features
 
 ✨ **Discover Movies**  
