@@ -129,6 +129,7 @@ public class LoginProcess extends HttpServlet {
                 }
                 session.setAttribute("username",username);
                 session.setAttribute("userID",userID);
+                session.setAttribute("email",email);
                 resp.sendRedirect("javaflix.jsp");
                 return;
 

@@ -7,7 +7,7 @@
     <title>JavaFlix - Discover Movies</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel = "stylesheet" href = "assets/css/homepage.css">
+    <link rel ="stylesheet" href ="CSS/homepage.css">
 </head>
 <body>
 <!-- Loading Animation -->
@@ -30,12 +30,12 @@
     </button>
 
     <div class="nav-links">
-        <a href="javaflix.jsp">Home</a>
+        <a href="#">Home</a>
         <a href="CheckSession">Saved Movies</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
 
-        <%-- Check if user is logged in --%>
+        <%-- Check if user is logged in (session exists) --%>
         <% if (session != null && session.getAttribute("username") != null) { %>
         <div class="profile-container">
             <button class="profile-btn" id="profileBtn">
@@ -49,11 +49,6 @@
                 <a href="setting.jsp"><i class="fas fa-cog"></i> Settings</a>
                 <a href="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
-        </div>
-        <% } else { %>
-        <div class="auth-buttons">
-            <a href="login.jsp" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
-            <a href="signup.jsp" class="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
         </div>
         <% } %>
     </div>

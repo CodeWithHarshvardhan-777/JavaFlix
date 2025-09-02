@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,6 +34,8 @@ public class HandleClient extends HttpServlet {
         String movie = request.getParameter("query");
         String encodemovie = URLEncoder.encode(movie, StandardCharsets.UTF_8.toString());
         String url = "https://www.omdbapi.com/?t=" + encodemovie + "&apikey=" + api_Key;
+
+
         try {
             URL url1 = new URL(url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url1.openConnection();
@@ -52,6 +55,7 @@ public class HandleClient extends HttpServlet {
             System.out.println(readAble);
 
             String title = jsonObject.get("Title").toString().replace("\"", "");
+            String rated = jsonObject.get("Rated").toString().replace("\"", "");
             String year = jsonObject.get("Year").toString().replace("\"", "");
             String released_Date = jsonObject.get("Released").toString().replace("\"", "");
             String runtime = jsonObject.get("Runtime").toString().replace("\"", "");
@@ -70,10 +74,13 @@ public class HandleClient extends HttpServlet {
             String collection = jsonObject.has("BoxOffice") ? jsonObject.get("BoxOffice").toString().replace("\"", "") : "N/A";
             String type = jsonObject.has("Type") ? jsonObject.get("Type").toString().replace("\"", "") : "N/A";
             String season = jsonObject.has("totalSeasons") ? jsonObject.get("totalSeasons").toString().replace("\"", "") : "N/A";
+            String imdbID = jsonObject.has("imdbID") ? jsonObject.get("imdbID").toString().replace("\"", "") : "N/A";
 
             request.setAttribute("title",title.replaceAll("^\"|\"$",""));
             request.setAttribute("year",year.replaceAll("^\"|\"$",""));
             request.setAttribute("type",type);
+            request.setAttribute("movie",movie);
+            request.setAttribute("imdbID",imdbID);
             request.setAttribute("totalSeasons",season);
             request.setAttribute("released",released_Date);
             request.setAttribute("runtime",runtime);
@@ -82,23 +89,20 @@ public class HandleClient extends HttpServlet {
             request.setAttribute("writer",Writer);
             request.setAttribute("actor",Actors);
             request.setAttribute("plot",plot);
+            request.setAttribute("rating",rated);
             request.setAttribute("language",language);
             request.setAttribute("country",country);
             request.setAttribute("award",awards);
-            request.setAttribute("poster",poster);
+            request.setAttribute("poster",poster.replaceAll("^\"|\"$", ""));
             request.setAttribute("metascore",metascore);
             request.setAttribute("imdb_rate",imdbrating);
             request.setAttribute("imdb_vote",imdbvotes);
             request.setAttribute("collection",collection);
-
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("result.jsp");
             requestDispatcher.forward(request,response);
 
-
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error","Wrong Movie Name or Failed to Fetch Movie Details.");
-            request.setAttribute("movie",movie);
             RequestDispatcher error = request.getRequestDispatcher("pagenotfound.jsp");
             error.forward(request,response);
 

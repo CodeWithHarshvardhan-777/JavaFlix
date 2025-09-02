@@ -5,7 +5,12 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <welcome-file-list>
-    <welcome-file>javaflix.html</welcome-file>
+    <welcome-file>javaflix.jsp</welcome-file>
   </welcome-file-list>
+
+  <session-config>
+    <session-timeout>4320</session-timeout>
+  </session-config>
+
 
 </web-app>
