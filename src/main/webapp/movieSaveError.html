@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unexpected Error | JavaFlix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel ="stylesheet" href ="CSS/movieSaveError.css">
+</head>
+<body>
+<div class="logo">
+    <span class="java">Java</span><span class="flix">Flix</span>
+</div>
+
+<div class="error-container">
+    <div class="error-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+    </div>
+
+    <h1>Unexpected Error</h1>
+
+    <p>We're sorry, but something went wrong. Please try again later.</p>
+
+    <div class="action-buttons">
+        <button class="btn btn-primary" id="goBackBtn">
+            <i class="fas fa-arrow-left"></i> Go Back
+        </button>
+
+        <a href="index.html" class="btn btn-secondary">
+            <i class="fas fa-home"></i> Home Page
+        </a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const goBackBtn = document.getElementById('goBackBtn');
+
+        // Go back in browser history
+        goBackBtn.addEventListener('click', function() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Keyboard shortcut (Esc key to go back)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
