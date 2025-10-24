@@ -55,7 +55,7 @@ public class Email extends HttpServlet {
     {
         boolean send = false;
         String server_Email = "h87539994@gmail.com";
-        String server_Email_Password = "lgty mzcy fbti xmbb";
+        String server_Email_Password = "afte wjrm thzh oysd";
 
         String subject = "Your JavaFlix OTP Code";
 

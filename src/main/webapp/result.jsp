@@ -287,7 +287,7 @@
 
             <div class="action-buttons">
                 <a href="javascript:history.back()" class="btn btn-primary">
-                    <i class="fas fa-arrow-left"></i> Back to Search
+                    <i class="fas fa-arrow-left"></i> Back
                 </a>
                 <% if (request.getAttribute("imdbID") != null) { %>
                     <a href="https://www.imdb.com/title/<%= request.getAttribute("imdbID") %>" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">

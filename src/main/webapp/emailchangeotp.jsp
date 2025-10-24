@@ -36,14 +36,14 @@
     </div>
 </nav>
 
-<!-- Error Message -->
+<!-- Error -->
 <% if(request.getAttribute("error") != null) { %>
     <div class="error-message" id="errorMessage">
         <%= request.getAttribute("error") %>
     </div>
 <% } %>
 
-<!-- Success Message -->
+<!-- Success -->
 <% if(request.getAttribute("success") != null) { %>
     <div class="success-message" id="successMessage">
         <%= request.getAttribute("success") %>

@@ -103,7 +103,7 @@ public class HandleClient extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            RequestDispatcher error = request.getRequestDispatcher("pagenotfound.jsp");
+            RequestDispatcher error = request.getRequestDispatcher("moviesearchError.html");
             error.forward(request,response);
 
         }

@@ -44,7 +44,7 @@
         </div>
         <% } %>
 
-        <a href="javaflix.html" class="home-btn">
+        <a href="javaflix.jsp" class="home-btn">
             <i class="fas fa-home"></i> Back to Home
         </a>
     </div>

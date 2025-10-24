@@ -110,21 +110,27 @@ public class savemovies extends HttpServlet {
 
             switch (result){
                 case "error":
-                    req.setAttribute("error","Error During Save Movie");
+                    RequestDispatcher requestDispatcherError = req.getRequestDispatcher("movieSaveError.html");
+                    requestDispatcherError.forward(req,resp);
                     break;
 
                 case "already_save":
-                    req.setAttribute("error","Movie is Already Save");
+                    RequestDispatcher requestDispatcherAlreadySaveError = req.getRequestDispatcher("movieAlreadySaveError.jsp");
+                    req.setAttribute("title",title);
+                    req.setAttribute("rating",imdb);
+                    req.setAttribute("genre",type);
+                    requestDispatcherAlreadySaveError.forward(req,resp);
                     break;
 
                 case "save":
                 default:
-                    req.setAttribute("success","Movie Save Successfully");
+                    RequestDispatcher requestDispatcher = req.getRequestDispatcher("successfullysave.jsp");
+                    req.setAttribute("title",title);
+                    req.setAttribute("rating",imdb);
+                    req.setAttribute("genre",type);
+                    requestDispatcher.forward(req,resp);
                     break;
             }
-
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("result.jsp");
-            requestDispatcher.forward(req,resp);
         }else {
             resp.sendRedirect("login.jsp");
         }
